@@ -11,6 +11,520 @@
 */
 
 .page {
-  min-inline-size: 320px;
+  margin: 0 auto;
+  min-inline-size: 375px;
   min-block-size: 100dvb;
+  font-family: var(--PressStart2P), sans-serif;
+  background-image: var(--cover-gradient); /*фоновая кртнка*/
+  background-repeat: no-repeat; /*Свйство - упрвлт пвтрм фнвго избржния. По умлчнию = repeat*/
+  background-position: center; /*упрвлть плжнем фнвй кртнки внтри элмнта.
+  по центру по горизонтали и вертикали*/
+  background-size: cover; /* изменять размер фонового изображения: 
+  избржние бдт обрзтся ппдая за грнцы экрна*/
+  background-attachment: fixed; /* Свйство опрдлт бдт ли фон пркрчвться вмсте со стрнцей 
+  или бдт зфксрвн на однм мсте. испльзтся для эффкта параллакса.*/
 }
+
+.decoration {
+  margin: 0px auto;
+  width: 0.01px;
+  height: 0.01px;
+  /* элемент позволяет не отступать элементу page от верхней кромки 
+  вслед за чердаком*/
+  position: relative;
+}
+
+.header {
+  display: flex;
+  width: var(--ultimate-block-with);
+  min-height: clamp(20.4375rem, 19.5352rem + 3.8498vw, 23rem);
+  margin: 100px auto 0px;
+  background-color: var(--card-color);
+  border: var(--boarderline);
+}
+
+.logo {
+  margin: clamp(7.625rem, 7.4489rem + 0.7512vw, 8.125rem) auto 0px; /*  align-self: center;- не попадает в макет (T___T)*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-title {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+}
+
+.logo-subtitle {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+}
+
+.main {
+  margin: clamp(6.25rem, 6.294rem + -0.1878vw, 6.125rem) auto 0px;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+/*я не знаю как задать карты кроме как делать их уникальными
+в макете карточки имеют уникальные отступы, что больше выглядит как опечатка
+при этом высоту карточек мы не ограничиваем, а это в сочетание приводит
+к накоплению погрешности и огромному разбросу в финальной карточке*/
+.card {
+  margin: 0px auto;
+  width: var(--ultimate-block-with);
+  background-color: var(--card-color);
+  border: solid black 2px;
+}
+
+.correction {
+  margin-top: 2px;
+}
+
+.card__title {
+  margin: 4px 10px 3px;
+  font-family: var(--Inter), sans-serif;
+  white-space: pre;
+  font-weight: 715;
+  font-size: 18px;
+  line-height: 1.25em;
+  letter-spacing: 0;
+}
+
+.card_picture {
+  position: relative;
+}
+
+.card__image {
+  position: relative;
+  min-width: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
+  height: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
+  object-fit: cover;
+  object-position: center;
+  background-image: url(../images/vagon_S.png);
+  background-color: black;
+}
+
+.blur {
+  filter: blur(0.2rem);
+}
+
+.grayscale {
+  filter: grayscale(0.8);
+}
+
+.saturate {
+  filter: saturate(500%);
+}
+
+.hue-rotate {
+  filter: hue-rotate(40deg);
+}
+
+.invert {
+  filter: invert(0.7);
+}
+
+.sepia {
+  filter: sepia(80%);
+}
+
+.multy {
+  filter: hue-rotate(90deg) saturate(500%) opacity(70%) grayscale(0.8);
+}
+
+.lable {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  z-index: 5;
+  -webkit-text-stroke: 1px var(--lable-overline-color);
+  color: rgba(0, 0, 0, 1);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  opacity: 50%;
+  mix-blend-mode: hard-light;
+}
+
+.card__text {
+  margin: 25px 25px 0px;
+  font-family: var(--Inter), sans-serif;
+  white-space: pre;
+  font-weight: 410;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.card__memory-text {
+  margin: 25px 25px 0px;
+  font-family: var(--Inter), sans-serif;
+  white-space: pre;
+  font-weight: 410;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+.heart-and-button {
+  margin: 25px 25px 25px;
+  display: flex;
+  flex-direction: row;
+  justify-self: end;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+/* >>>>>>>>>>>>>>>>>> кнопка Like <<<<<<<<<<<<<<<<<<<<<<< */
+
+.card__icon-button {
+  position: relative;
+   width: 37px;
+  height: 34px;
+  background-color: white;
+    border: none;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~ анимация сердца ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+
+.contour {
+transition: fill 0.1s linear 0s;
+}
+
+.main-body {
+transition: fill 0.3s linear 0.03s;
+}
+
+.core {
+transition: fill 0.3s linear 0.03s;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.like-icon:hover {
+.core {
+fill: black;
+transition-delay: 0s;
+}
+.main-body {
+fill: black;
+transition-delay: 0.05s;
+}
+}
+
+.like-icon:active {
+.core {
+fill: rgb(255, 0, 0);
+transition-delay: 0s;
+}
+.main-body {
+fill: rgb(253, 0, 0);
+transition-delay: 0.05s;
+}
+}
+
+.like-icon.is-liked .core {
+transition: fill 0.3s linear 0s;
+fill: red;
+}
+
+.like-icon.is-liked .main-body {
+transition: fill 0.3s linear 0.05s;
+fill: red;
+}
+
+.like-icon.is-liked .contour {
+transition: fill 0.3s linear 0.06s;
+fill: red;
+}
+
+.like-icon.is-liked:hover {
+  animation: heartbeat 0.3s 0.1s ease-in 1;
+}
+
+.like-icon.is-liked:hover .sparks {
+  animation: sparkson 0.3s 0.3s ease-in 1;
+}
+
+/*~~~~~~~~~~~~~~~~~~~~~ анимация сердца end~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+.like-icon {
+  position: absolute;
+  top: 0;
+  left: 0px;
+width: 37px;
+  height: 37px;
+}
+
+.card__icon-button:focus:focus-visible {
+  outline: 2px solid black;
+  transition: 0.3s ease;
+}
+
+.card__like-button {
+  position: relative;
+  width: 130px;
+  height: 38px;
+  background-color: white;
+  border: solid 2px black;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 90%;
+  letter-spacing: 0;
+  overflow: hidden;
+}
+
+.card__like-button:focus:focus-visible {
+outline: none;
+box-shadow: 2px 2px 0px 0px rgb(0 0 0 / 0.6);
+transition: 0.3s ease;
+}
+
+.card__like-button::before {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 130px;
+  height: 38px;
+  background-color: black;
+  translate: -100% 0%;
+  transition: translate 0.5s ease-in-out;
+}
+
+.card__like-button:hover::before {
+
+  translate: 0% 0%;
+}
+
+.button__text {
+  position: absolute;
+  top: 32%;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  mix-blend-mode: difference;
+  color: white;
+}
+
+/*-----------------подвал--------------------*/
+
+/* >>>>>>>>>>>>>>>>>> кнопка СОХРАНИТЬ НА ПАМЯТЬ <<<<<<<<<<<< */
+.save-button {
+  position: relative;
+  margin: 49px auto 100px;
+  display: flex;
+  flex-wrap: wrap;
+  width: clamp(19.125rem, 18.4868rem + 2.723vw, 20.9375rem);
+  height: clamp(5.25rem, 5.8882rem + -2.723vw, 3.4375rem);
+  background-color: rgba(255, 255, 255, 1);
+  border: 2px solid rgba(0, 0, 0, 1);
+  gap: 15px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.floppy-s {
+  width: 50px;
+  height: 50px;
+}
+
+.save-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 90%;
+  letter-spacing: 0;
+  vertical-align: middle;
+    z-index: 25;
+    mix-blend-mode: difference;
+  color: white;
+}
+
+.save-button:focus:focus-visible {
+outline: none;
+box-shadow: 2px 2px 0px 0px rgb(0 0 0 / 0.6);
+transition: 0.3s ease;
+}
+
+.save-button::before {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  translate: -100% 0%;
+  transition: translate 0.5s ease-in-out;
+}
+
+.save-button:hover::before {
+
+  translate: 0% 0%;
+}
+
+.button__text {
+  position: absolute;
+  top: 32%;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  mix-blend-mode: difference;
+  color: white;
+}
+
+.memory-save {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
+  min-height: 191px;
+  top: clamp(14.75rem, 11.482rem + 13.9437vw, 24.03125rem);
+  left: clamp(1.0625rem, -10.5242rem + 49.4366vw, 33.96875rem);
+  z-index: 15;
+  background-color: rgba(255, 255, 255, 1);
+  border: 2px solid rgba(0, 0, 0, 1);
+  gap: 26px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+dialog {
+  width: 0.1px;
+  height: 0.1px;
+  border: none;
+  background-color: transparent;
+}
+
+dialog::backdrop {
+  background-color: rgb(0 0 0 / 0.6);
+}
+
+.floppy-symbol {
+  width: 0.01px;
+  height: 0.01px;
+}
+
+.floppy-L {
+  width: 39px;
+  height: 39px;
+}
+
+.message {
+  margin: 0px auto;
+  display: flex;
+  flex-direction: row;
+  gap: 23px;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.floppy-s {
+  width: 21px;
+  height: 21px;
+}
+
+.dialog-text {
+  white-space: pre;
+}
+
+/* >>>>>>>>>>>>>>>>>>>>>>> кнопка ОК <<<<<<<<<<<<<<<<<<<<< */
+
+.ok-button {
+  position: relative;
+  margin: 0 auto;
+  width: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
+  height: 38px;
+  background-color: white;
+   border: solid 2px black;
+   overflow: hidden;
+}
+
+.ok-button:focus:focus-visible {
+outline: none;
+box-shadow: 2px 2px 0px 0px rgb(0 0 0 / 0.6);
+transition: 0.3s ease;
+}
+
+.ok-button::before {
+  content: "";
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 38px;
+  background-color: black;
+  translate: -100% 0%;
+  transition: translate 0.5s ease-in-out;
+}
+
+.ok-button:hover::before {
+
+  translate: 0% 0%;
+}
+
+.ok-button-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 90%;
+  letter-spacing: 0;
+  text-transform: uppercase;
+   position: absolute;
+  top: 32%;
+  left: 0;
+  right: 0;
+  z-index: 25;
+  mix-blend-mode: difference;
+  color: white;
+}
+
+
+@media (376px < width) {
+  .card__title {
+    white-space: normal;
+  }
+
+  .card__text {
+    white-space: normal;
+  }
+
+  .card__memory-text {
+    white-space: normal;
+  }
+
+  .floppy-icon {
+    width: 21px;
+    height: 21px;
+  }
+
+  .save-button {
+    width: clamp(19.125rem, 18.4868rem + 2.723vw, 20.9375rem);
+    height: 55px;
+  }
+}
+
+
+
+
+
+

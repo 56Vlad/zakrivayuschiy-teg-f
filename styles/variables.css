@@ -1,1 +1,19 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+--Inter: 'Inter-Variable';
+--PressStart2P: 'PressStart2P-Regular';
+/* повтор градиентов прямолинейный ( угол направления движения заливки
+, цвет ржб / прозрачность
+ промежуток сплошного цвета % или в пикселях от-до либо граница цвета
+*/
+--cover-gradient: 
+repeating-linear-gradient(to right, rgb(211 211 211 / 1) 0px 2px, rgb(211 211 211 / 0) 2px 4px),
+repeating-linear-gradient(to top, rgb(211 211 211 / 1) 0px 2px, rgb(211 211 211 / 0) 2px 4px),
+repeating-linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
+--ultimate-block-with: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
+--card-color: rgba(255, 255, 255, 1);
+--boarderline: 2px solid rgba(0, 0, 0, 1);
+--lable-overline-color: rgba(255, 255, 255, 1);
+--animation-fill-color: rgba(255, 0, 0, 1);
+--contour-color: rgba(0, 0, 0, 1 );
+}
