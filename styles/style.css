@@ -11,10 +11,12 @@
 */
 
 .page {
+  /* ??? 13- настройки вариативных шрифтов должны быть = к чему это?? тут нет такого шрифта еще несколько атрибутов вниз... */
   margin: 0 auto;
   min-inline-size: 375px;
   min-block-size: 100dvb;
-  font-family: var(--PressStart2P), sans-serif;
+  font-family: var(--accent-amazing-fantastic-pixilate-font), sans-serif;
+  /* ??? 17-предусмотреть запасные значения = о чем - какие альтернативы - добавлен же подстраховочный шрифт*/
   background-image: var(--cover-gradient); /*фоновая кртнка*/
   background-repeat: no-repeat; /*Свйство - упрвлт пвтрм фнвго избржния. По умлчнию = repeat*/
   background-position: center; /*упрвлть плжнем фнвй кртнки внтри элмнта.
@@ -25,48 +27,51 @@
   или бдт зфксрвн на однм мсте. испльзтся для эффкта параллакса.*/
 }
 
-.decoration {
-  margin: 0px auto;
-  width: 0.01px;
-  height: 0.01px;
-  /* элемент позволяет не отступать элементу page от верхней кромки 
-  вслед за чердаком*/
-  position: relative;
-}
-
 .header {
   display: flex;
-  width: var(--ultimate-block-with);
-  min-height: clamp(20.4375rem, 19.5352rem + 3.8498vw, 23rem);
+  width: var(--ultimate-block-with); 
+  /*удалил, но не принимаю такой подход - 
+  отсутствие границ - ведет к 
+  хаосу - тут нету реальной причины под
+  динамическое наполнение текстом, будет другой текст - будет другой код
+  так какая разница когда его переписывать?
+  поменяется размер текста - изменится и дизайн,
+  тк это все равно повлияет на восприятие материала, и нужны будут правки
+  для лучшего восприятия,
+  не хочу думать что было в голове у дезайнера,
+  у меня другоек видение - будет меньше текста,
+  останется ровно столько свободного пространства
+  сколько требуется чтобы донести глубокую идею,
+  и потом кто сказал что может быть меньше текства -но ведь может и не быть...
+  это как покупать одежду на вырост, потратитьс силы на поиск, заплатить больше из расчета
+  псевдо экономии в перспективе, и потом ходить мучиться, портить здаровье, да и
+   не красиво выглядит это, а в результате к тому времени когда дорастешь до нее
+   вещь уже выйдет из моды, обветжает, надоести, или вообще не доживет до этого часа.*/
   margin: 100px auto 0px;
   background-color: var(--card-color);
-  border: var(--boarderline);
-}
-
-.logo {
-  margin: clamp(7.625rem, 7.4489rem + 0.7512vw, 8.125rem) auto 0px; /*  align-self: center;- не попадает в макет (T___T)*/
-  display: flex;
-  flex-direction: column;
+  border: var(--border-line);
+    flex-direction: column;
   align-items: center;
   gap: 20px;
 }
 
 .logo-title {
+  margin: clamp(7.625rem, 7.4489rem + 0.7512vw, 8.125rem) auto 0px;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-transform: uppercase;
 }
 
 .logo-subtitle {
-  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
-}
-
-.main {
-  margin: clamp(6.25rem, 6.294rem + -0.1878vw, 6.125rem) auto 0px;
+    font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+    margin: 0px auto clamp(7.625rem, 7.4489rem + 0.7512vw, 8.125rem);
+    text-transform: uppercase;
 }
 
 .cards {
+  margin: 97px auto 0;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 49px;
 }
 /*я не знаю как задать карты кроме как делать их уникальными
 в макете карточки имеют уникальные отступы, что больше выглядит как опечатка
@@ -76,34 +81,34 @@
   margin: 0px auto;
   width: var(--ultimate-block-with);
   background-color: var(--card-color);
-  border: solid black 2px;
+  border: var(--border-line);
 }
 
 .correction {
-  margin-top: 2px;
+  margin-top: 4px;
 }
 
 .card__title {
   margin: 4px 10px 3px;
-  font-family: var(--Inter), sans-serif;
+  font-family: var(--main-no-idea-for-semantic-name-font), sans-serif;
+  font-variation-settings: 'wght' 715; /*смысл этого параметра в данной модели - тут нет характеристик для раельизации */
   white-space: pre;
-  font-weight: 715;
-  font-size: 18px;
+    font-size: 18px;
   line-height: 1.25em;
   letter-spacing: 0;
 }
 
-.card_picture {
+.card__picture {
   position: relative;
+  border: 2px solid black;
 }
 
-.card__image {
+.card__picture_image {
   position: relative;
   min-width: clamp(23.1875rem, 16.0352rem + 30.5164vw, 43.5rem);
   height: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
   object-fit: cover;
   object-position: center;
-  background-image: url(../images/vagon_S.png);
   background-color: black;
 }
 
@@ -151,9 +156,33 @@
   mix-blend-mode: hard-light;
 }
 
+@supports (
+  (-webkit-text-stroke: 1px var(--lable-overline-color)) or
+    (text-stroke: 1px #ffffff)
+) {
+  .card__label {
+    -webkit-text-stroke: 1px #ffffff;
+    text-stroke: 1px #ffffff;
+    text-shadow: none;
+  }
+}
+
+@supports not (
+  (-webkit-text-stroke: 1px #ffffff) or
+    (text-stroke: 1px #ffffff)
+) {
+  .card__label {
+    text-shadow: 1px 1px 0 #ffffff,
+      -1px -1px 0 #ffffff, -1px 1px 0 #ffffff,
+      1px -1px 0 #ffffff;
+  }
+}
+
+/* 152 -Опечатка в названии класса. 
+Используйте более корректное слово. = о чем речь???*/
 .card__text {
-  margin: 25px 25px 0px;
-  font-family: var(--Inter), sans-serif;
+  margin: 22px 25px 0px;
+  font-family: var(--main-no-idea-for-semantic-name-font), sans-serif;
   white-space: pre;
   font-weight: 410;
   font-size: 18px;
@@ -163,7 +192,7 @@
 
 .card__memory-text {
   margin: 25px 25px 0px;
-  font-family: var(--Inter), sans-serif;
+  font-family: var(--main-no-idea-for-semantic-name-font), sans-serif;
   white-space: pre;
   font-weight: 410;
   font-size: 18px;
@@ -185,10 +214,12 @@
 
 .card__icon-button {
   position: relative;
-   width: 37px;
+  width: 37px;
   height: 34px;
   background-color: white;
-    border: none;
+  border: none;
+  outline: 2px solid transparent;
+  transition: outline 0.3s ease;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~ анимация сердца ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -199,7 +230,7 @@ transition: fill 0.1s linear 0s;
 }
 
 .main-body {
-transition: fill 0.3s linear 0.03s;
+transition: fill 0.3s linear 0s;
 }
 
 .core {
@@ -247,11 +278,11 @@ transition: fill 0.3s linear 0.06s;
 fill: red;
 }
 
-.like-icon.is-liked:hover {
+.like-icon.is-liked {
   animation: heartbeat 0.3s 0.1s ease-in 1;
 }
 
-.like-icon.is-liked:hover .sparks {
+.like-icon.is-liked .sparks {
   animation: sparkson 0.3s 0.3s ease-in 1;
 }
 
@@ -259,28 +290,21 @@ fill: red;
 
 .like-icon {
   position: absolute;
-  top: 0;
+  top: -5px;
   left: 0px;
-width: 37px;
-  height: 37px;
+  width: 37px;
+  height: 40px;
 }
 
 .card__icon-button:focus:focus-visible {
   outline: 2px solid black;
-  transition: 0.3s ease;
 }
 
 .card__like-button {
+  transition: 0.3s ease;
   position: relative;
   width: 130px;
   height: 38px;
-  background-color: white;
-  border: solid 2px black;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 90%;
-  letter-spacing: 0;
-  overflow: hidden;
 }
 
 .card__like-button:focus:focus-visible {
@@ -303,8 +327,20 @@ transition: 0.3s ease;
 }
 
 .card__like-button:hover::before {
-
   translate: 0% 0%;
+}
+
+
+
+/*-----------------подвал--------------------*/
+
+/* >>>>>>>>>>>>>>>>>> кнопка СОХРАНИТЬ НА ПАМЯТЬ <<<<<<<<<<<< */
+.button {
+  cursor: pointer;
+  position: relative;
+  background-color: var(--button-color);
+  border: var(--button-border-line);
+  overflow: hidden;
 }
 
 .button__text {
@@ -315,41 +351,40 @@ transition: 0.3s ease;
   z-index: 25;
   mix-blend-mode: difference;
   color: white;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 90%;
+  letter-spacing: 0;
 }
 
-/*-----------------подвал--------------------*/
+.save-icon {
+  mix-blend-mode: difference;
+  fill: #ffffff;
+  color: white;
+  z-index: 30;
+}
 
-/* >>>>>>>>>>>>>>>>>> кнопка СОХРАНИТЬ НА ПАМЯТЬ <<<<<<<<<<<< */
 .save-button {
-  position: relative;
-  margin: 49px auto 100px;
+  margin: 49px auto 80px;
   display: flex;
   flex-wrap: wrap;
   width: clamp(19.125rem, 18.4868rem + 2.723vw, 20.9375rem);
   height: clamp(5.25rem, 5.8882rem + -2.723vw, 3.4375rem);
-  background-color: rgba(255, 255, 255, 1);
-  border: 2px solid rgba(0, 0, 0, 1);
-  gap: 15px;
+  gap: 10px;
   justify-content: center;
   align-content: center;
   align-items: center;
   overflow: hidden;
 }
 
-.floppy-s {
-  width: 50px;
-  height: 50px;
-}
-
 .save-text {
+  z-index: 25;
+  mix-blend-mode: difference;
+  color: white;
   font-weight: 400;
   font-size: 14px;
   line-height: 90%;
   letter-spacing: 0;
-  vertical-align: middle;
-    z-index: 25;
-    mix-blend-mode: difference;
-  color: white;
 }
 
 .save-button:focus:focus-visible {
@@ -372,22 +407,24 @@ transition: 0.3s ease;
 }
 
 .save-button:hover::before {
-
   translate: 0% 0%;
 }
 
-.button__text {
-  position: absolute;
-  top: 32%;
-  left: 0;
-  right: 0;
-  z-index: 25;
-  mix-blend-mode: difference;
-  color: white;
+.dialog-frame {
+  position: fixed;
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  outline: none;
+  border: none;
 }
 
 .memory-save {
-  position: fixed;
+  position: auto;
+  top: auto;
+  bottom: auto;
+  left: auto;
+  right: auto;
   display: flex;
   flex-direction: column;
   width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
@@ -403,25 +440,10 @@ transition: 0.3s ease;
   align-items: center;
 }
 
-dialog {
-  width: 0.1px;
-  height: 0.1px;
-  border: none;
-  background-color: transparent;
-}
+/*Диалог должен всегда находится по центру.  - и как же это сделать?*/
 
 dialog::backdrop {
-  background-color: rgb(0 0 0 / 0.6);
-}
-
-.floppy-symbol {
-  width: 0.01px;
-  height: 0.01px;
-}
-
-.floppy-L {
-  width: 39px;
-  height: 39px;
+  background-color: rgb(0 0 0 / 0.75);
 }
 
 .message {
@@ -436,11 +458,6 @@ dialog::backdrop {
   line-height: 150%;
   letter-spacing: 0;
   text-transform: uppercase;
-}
-
-.floppy-s {
-  width: 21px;
-  height: 21px;
 }
 
 .dialog-text {
@@ -479,25 +496,8 @@ transition: 0.3s ease;
 }
 
 .ok-button:hover::before {
-
   translate: 0% 0%;
 }
-
-.ok-button-text {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 90%;
-  letter-spacing: 0;
-  text-transform: uppercase;
-   position: absolute;
-  top: 32%;
-  left: 0;
-  right: 0;
-  z-index: 25;
-  mix-blend-mode: difference;
-  color: white;
-}
-
 
 @media (376px < width) {
   .card__title {
@@ -516,15 +516,12 @@ transition: 0.3s ease;
     width: 21px;
     height: 21px;
   }
+}
 
+@media (1439px < width) {
   .save-button {
-    width: clamp(19.125rem, 18.4868rem + 2.723vw, 20.9375rem);
     height: 55px;
   }
 }
-
-
-
-
 
 

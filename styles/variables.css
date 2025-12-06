@@ -1,7 +1,7 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
---Inter: 'Inter-Variable';
---PressStart2P: 'PressStart2P-Regular';
+--main-no-idea-for-semantic-name-font: 'Inter-Variable';
+--accent-amazing-fantastic-pixilate-font: 'PressStart2P';
 /* повтор градиентов прямолинейный ( угол направления движения заливки
 , цвет ржб / прозрачность
  промежуток сплошного цвета % или в пикселях от-до либо граница цвета
@@ -12,8 +12,12 @@ repeating-linear-gradient(to top, rgb(211 211 211 / 1) 0px 2px, rgb(211 211 211 
 repeating-linear-gradient(to bottom, #e7e7e7 0.01%, #1a1a1a);
 --ultimate-block-with: clamp(23.4375rem, 16.2852rem + 30.5164vw, 43.75rem);
 --card-color: rgba(255, 255, 255, 1);
---boarderline: 2px solid rgba(0, 0, 0, 1);
+--button-color: rgba(255, 255, 255, 1);
+--border-line: 2px solid rgba(0, 0, 0, 1); /* да тут опечатка - но слово такое есть одно, а не два*/
+--button-border-line: 2px solid rgba(0, 0, 0, 1);
 --lable-overline-color: rgba(255, 255, 255, 1);
 --animation-fill-color: rgba(255, 0, 0, 1);
 --contour-color: rgba(0, 0, 0, 1 );
+
+
 }

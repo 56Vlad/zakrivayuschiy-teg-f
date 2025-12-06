@@ -2,14 +2,14 @@
 <html lang="ru">
   <head>
     <!-- определяет кодировку страницы-->
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <!-- определяет поведение страницы в зависимости от размера дисплея-->
     <!-- width=device-width — видимая пользователю часть занимает всю ширину экрана;
          initial-scale=1 — указывает, что страница не должна увеличиваться или уменьшаться (масштабироваться) при загрузке.
       -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="description" content="Описание страницы" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Описание страницы"/>
     <!-- заголовок страницы-->
     <title>Закрывающий тег</title>
     <!-- link-загружает на страницу содержимое из внешнего файла
@@ -21,15 +21,15 @@
          ...
     -->
     <!-- подключение иконки-->
-    <link rel="icon" href="./images/favicon.ico" sizes="any" />
-    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="./images/mobile-icon.png" />
+    <link rel="icon" href="./images/favicon.ico" sizes="any"/>
+    <link rel="icon" href="./images/favicon.svg" type="image/svg+xml"/>
+    <link rel="apple-touch-icon" href="./images/mobile-icon.png"/>
     <!-- подключение папок-->
-    <link rel="stylesheet" href="./fonts/fonts.css" />
-    <link rel="stylesheet" href="./styles/variables.css" />
-    <link rel="stylesheet" href="./styles/globals.css" />
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/animations.css" />
+    <link rel="stylesheet" href="./fonts/fonts.css"/>
+    <link rel="stylesheet" href="./styles/variables.css"/>
+    <link rel="stylesheet" href="./styles/globals.css"/>
+    <link rel="stylesheet" href="./styles/style.css"/>
+    <link rel="stylesheet" href="./styles/animations.css"/>
   </head>
   <body class="page">
 <!--
@@ -38,24 +38,23 @@
     
     <!-- -----------тушка------------------- -->
     <header class="header">  <!-- *********************чердак******** -->
-      <div class="logo">
-        <h1 class="logo-title">&lt;/HTML&gt;</h1>
-        <h2 class="logo-subtitle">ЗАКРЫВАЮЩИЙ ТЕГ</h2>
-      </div>
+      <h1 class="logo-title">&lt;/HTML&gt;</h1>
+      <h2 class="logo-subtitle">ЗакрывающиЙ ТЕГ</h2>
     </header>
-    <main class="main"> <!-- **************************чердак******** -->
+    <main> <!-- **************************чердак******** -->
       <ul class="cards"> <!-- неупорядоченный маркированный список -->
         <li class="card">
           <article>
             <h3 class="card__title">Фритрек и нулевой спринт: 
 Подготовка к работе</h3>
-            <div class="card_picture">
+            <div class="card__picture">
               <img
                 src="./images/vagon_S.png"
                 alt="фургон на кемпинг парковке ночью"
-                class="card__image"
+                class="card__picture_image"
+                loading="lazy"
               />
-              <div class="lable">&lt;/HTML&gt;</div>
+              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div><!-- глушим скриндридер чтобы не отвлекал на ерунду-->
             </div>
             <p class="card__text">Это было самое начало пути. На 
 этом этапе важно было 
@@ -67,7 +66,16 @@
             <p class="card__memory-text">Место для ваших воспоминаний о 
 начале обучения.</p>
             <div class="heart-and-button">
-              <button class="card__icon-button" type="button">
+              <button aria-label="нажми на кнопку - получишь результат..." class="card__icon-button" type="button">
+                <!-- замечание принято, но с палитикой не согласен - это все равно, что делать пантусы в старых подъездах
+                 которые без посторонней помощи инвалид все равно не сможет использовать,
+                 хотелось бы чтобы выделялиь отдельные бюджеты под специальные разработки
+                 клиентоориентированных сайтов, а не экономить ресурсы за счет рядовых соотрудников
+                 возлагая на них работу которую по достоинству не оценится, а основной процесс испортит,
+                 всем сразу не угодить, и лучше не распыляться, и создать несколько удобных вещей объединенных одной идеей,
+                 чем пытаться упихнуть все сразу и в одно. у нас никогда бы не было огрызкофона если бы дедушка Стив стремился создать
+                 чтото угодить всем сразу, а не просто воплощал идею.
+                 -->
                 <svg class="like-icon"
                   width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g class="hart">
@@ -82,7 +90,7 @@
                   fill="var(--animation-fill-color)"/>
                 </svg>
               </button>
-              <button class="card__like-button" type="button">
+              <button class="card__like-button button" type="button">
                 <span class="button__text">Like</span>
               </button>
             </div>
@@ -91,13 +99,14 @@
         <li class="card">
           <article>
             <h3 class="card__title">1 спринт: Я — чистый лист</h3>
-              <div class="card_picture">
+              <div class="card__picture">
               <img
                 src="./images/vagon_S.png"
                 alt="фургон на кемпинг парковке ночью"
-                class="card__image grayscale"
-              />
-              <div class="lable">&lt;/HTML&gt;</div>
+                class="card__picture_image grayscale"
+                loading="lazy" 
+              /> <!-- ленивая загрузка loading="lazy" улучшает скорость страницы-->
+              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text">На первых этапах мы работали со 
 страхами и сомнениями, которые
@@ -113,7 +122,7 @@
             <p class="card__memory-text">Место для ваших воспоминаний о 
 начале первого спринта.</p>
             <div class="heart-and-button">
-              <button class="card__icon-button" type="button">
+              <button aria-label="нажми на кнопку - получишь результат..." class="card__icon-button" type="button">
                 <svg class="like-icon"
                   width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g class="hart">
@@ -128,7 +137,7 @@
                   fill="var(--animation-fill-color)"/>
                 </svg>
               </button>
-              <button class="card__like-button" type="button">
+              <button class="card__like-button button" type="button">
                 <span class="button__text">Like</span>
               </button>
             </div>
@@ -137,13 +146,14 @@
         <li class="card">
           <article>
             <h3 class="card__title">1 спринт: А если не получится?</h3>
-              <div class="card_picture">
+              <div class="card__picture">
               <img
                 src="./images/vagon_S.png"
                 alt="фургон на кемпинг парковке ночью"
-                class="card__image saturate"
+                class="card__picture_image saturate"
+                loading="lazy"
               />
-              <div class="lable">&lt;/HTML&gt;</div>
+              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text">Первый проект — позади! Но это 
 всё ещё самое начало пути. 
@@ -154,8 +164,8 @@
 в себя.</p>
             <p class="card__memory-text">Место для ваших воспоминаний об 
 окончании первого спринта.</p>
-            <div class="heart-and-button">
-              <button class="card__icon-button" type="button">
+             <div class="heart-and-button">
+              <button aria-label="нажми на кнопку - получишь результат..." class="card__icon-button" type="button">
                 <svg class="like-icon"
                   width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g class="hart">
@@ -170,20 +180,20 @@
                   fill="var(--animation-fill-color)"/>
                 </svg>
               </button>
-              <button class="card__like-button" type="button">
+              <button class="card__like-button button" type="button">
                 <span class="button__text">Like</span>
               </button>
             </div>
           </article>
         </li>
-        <li class="card correction">
+        <li class="card">
           <article>
             <h3 class="card__title">2 спринт: Погоня за идеалом</h3>
-              <div class="card_picture">
+              <div class="card__picture">
               <img
                 src="./images/vagon_S.png"
                 alt="фургон на кемпинг парковке ночью"
-                class="card__image hue-rotate"
+                class="card__picture_image hue-rotate"
               />
               <div class="lable">&lt;/HTML&gt;</div>
             </div>
@@ -199,8 +209,8 @@
 сделать.</p>
             <p class="card__memory-text">Место для ваших воспоминаний о 
 начале второго спринта.</p>
-             <div class="heart-and-button">
-              <button class="card__icon-button" type="button">
+            <div class="heart-and-button">
+              <button aria-label="нажми на кнопку - получишь результат..." class="card__icon-button" type="button">
                 <svg class="like-icon"
                   width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g class="hart">
@@ -215,7 +225,7 @@
                   fill="var(--animation-fill-color)"/>
                 </svg>
               </button>
-              <button class="card__like-button" type="button">
+              <button class="card__like-button button" type="button">
                 <span class="button__text">Like</span>
               </button>
             </div>
@@ -224,13 +234,14 @@
         <li class="card">
           <article>
             <h3 class="card__title">2 спринт: О тех, кто рядом</h3>
-              <div class="card_picture">
+              <div class="card__picture">
               <img
                 src="./images/vagon_S.png"
                 alt="фургон на кемпинг парковке ночью"
-                class="card__image invert"
+                class="card__picture_image invert"
+                loading="lazy"
               />
-             <div class="lable">&lt;/HTML&gt;</div>
+             <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text">Всё это время вы были не одиноки 
 (хотя, возможно, иногда и 
@@ -246,8 +257,8 @@
 единомышленники, не правда ли?</p>
             <p class="card__memory-text">Место для ваших воспоминаний об 
 окончании второго спринта.</p>
-             <div class="heart-and-button">
-              <button class="card__icon-button" type="button">
+            <div class="heart-and-button">
+              <button aria-label="нажми на кнопку - получишь результат..." class="card__icon-button" type="button">
                 <svg class="like-icon"
                   width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g class="hart">
@@ -262,7 +273,7 @@
                   fill="var(--animation-fill-color)"/>
                 </svg>
               </button>
-              <button class="card__like-button" type="button">
+              <button class="card__like-button button" type="button">
                 <span class="button__text">Like</span>
               </button>
             </div>
@@ -271,13 +282,14 @@
         <li class="card">
           <article>
             <h3 class="card__title">3 спринт: Обходные стратегии</h3>
-              <div class="card_picture">
+              <div class="card__picture">
               <img
                 src="./images/vagon_S.png"
                 alt="фургон на кемпинг парковке ночью"
-                class="card__image sepia"
+                class="card__picture_image sepia"
+                loading="lazy"
               />
-              <div class="lable">&lt;/HTML&gt;</div>
+              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text">На этом курсе вы постоянно 
 решали разные задачи. В какой-то 
@@ -287,8 +299,8 @@
 задачу под другим углом.</p>
             <p class="card__memory-text">Место для ваших воспоминаний о 
 начале третьего спринта.</p>
-         <div class="heart-and-button">
-              <button class="card__icon-button" type="button">
+            <div class="heart-and-button">
+              <button aria-label="нажми на кнопку - получишь результат..." class="card__icon-button" type="button">
                 <svg class="like-icon"
                   width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g class="hart">
@@ -303,23 +315,23 @@
                   fill="var(--animation-fill-color)"/>
                 </svg>
               </button>
-              <button class="card__like-button" type="button">
+              <button class="card__like-button button" type="button">
                 <span class="button__text">Like</span>
               </button>
             </div>
           </article>
         </li>
-        <li class="card">
+        <li class="card  correction">
           <article>
-
             <h3 class="card__title">3 спринт: Когда опускаются руки</h3>
-              <div class="card_picture">
+              <div class="card__picture">
               <img
                 src="./images/vagon_S.png"
                 alt="фургон на кемпинг парковке ночью"
-                class="card__image blur"
+                class="card__picture_image blur"
+                loading="lazy"
               />
-              <div class="lable">&lt;/HTML&gt;</div>
+              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text">Во время учёбы часто возникает 
 чувство, когда не знаешь, за что
@@ -333,7 +345,7 @@
             <p class="card__memory-text">Место для ваших воспоминаний об 
 окончании третьего спринта.</p>
             <div class="heart-and-button">
-              <button class="card__icon-button" type="button">
+              <button aria-label="нажми на кнопку - получишь результат..." class="card__icon-button" type="button">
                 <svg class="like-icon"
                   width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g class="hart">
@@ -348,23 +360,23 @@
                   fill="var(--animation-fill-color)"/>
                 </svg>
               </button>
-              <button class="card__like-button" type="button">
+              <button class="card__like-button button" type="button">
                 <span class="button__text">Like</span>
               </button>
             </div>
           </article>
         </li>
-        <li class="card correction">
+        <li class="card">
           <article>
 
             <h3 class="card__title">«Сейчас я здесь»</h3>
-              <div class="card_picture">
+              <div class="card__picture">
               <img
                 src="./images/vagon_S.png"
                 alt="фургон на кемпинг парковке ночью"
-                class="card__image multy"
+                class="card__picture_image multy"
               />
-              <div class="lable">&lt;/HTML&gt;</div>
+              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text">Сейчас вы уже очень много знаете 
 о вёрстке. Но это только начало.
@@ -381,8 +393,8 @@
             <p class="card__memory-text">Место, чтобы остановиться, 
 подумать и написать, что вы 
 чувствуете в этой точке пути.</p>
-                     <div class="heart-and-button">
-              <button class="card__icon-button" type="button">
+            <div class="heart-and-button">
+              <button aria-label="нажми на кнопку - получишь результат..." class="card__icon-button" type="button">
                 <svg class="like-icon"
                   width="39" height="36" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                  <g class="hart">
@@ -397,7 +409,7 @@
                   fill="var(--animation-fill-color)"/>
                 </svg>
               </button>
-              <button class="card__like-button" type="button">
+              <button class="card__like-button button" type="button">
                 <span class="button__text">Like</span>
               </button>
             </div>
@@ -405,46 +417,55 @@
         </li>
       </ul>
     </main>
-    <footer class="footer"> <!-- ***********************подвал******* -->
-      <button class="save-button"
-          type="button" 
-    onclick="window['dialog-id'].showModal()" 
-    aria-controls="dialog-id">
-        <svg class="floppy-s" viewBox="0 0 39 39">
-          <!-- какой-то бред - как это работает ?!! размерностми живут 
-           своей жизнью - размер инлайн 39 в диалог берется оригиналом
-           в кнопку тащится мелким меньше 21 и не управляется через свойства-->
-          <use href="#floppy-icon">
+    <footer> <!-- ***********************подвал******* -->
+      <button class="save-button button"
+        type="button"
+        onclick="window['dialog-id'].showModal()" 
+        aria-controls="dialog-id">
+       <svg class="save-icon"
+          width="27" 
+          height="27" 
+          viewBox="0 0 39 39">
+       <path fill="currencolor" d="M0 0h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zM33 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3H9V0zM9 0v3H6V0zM6 0v3H3V0zm30 3v3h-3V3zM9 6v3H6V6zm0-3v3H6V3zm0 6v3H6V9zm21-3v3h-3V6zm0-3v3h-3V3zm0 6v3h-3V9zm-6-3v3h-3V6zm0-3v3h-3V3zm0 6v3h-3V9zm6 3v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3H9v-3zm-3 0v3H6v-3zm24 9v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3H9v-3zm-3 0v3H6v-3zm24 3v3h-3v-3zM9 24v3H6v-3zm24 3v3h-3v-3zM9 27v3H6v-3zm24 3v3h-3v-3zM9 30v3H6v-3zm0 3v3H6v-3zm24 0v3h-3v-3zm3 3v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3H9v-3zm-3 0v3H6v-3zm-3 0v3H3v-3zm33 3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3V9h3zm0-3h-3V6h3z"/>
+        </svg>
+        <!-- <svg class="save-icon"
+          width="27" 
+          height="27" 
+          viewBox="0 0 39 39">
+          <use href="./svg/floppy.svg#floppy"></use>
         </svg> 
+        !!!!!!!!!!!!!!!!!!!!!!
+        нет больше сил уже заставить работать иконку использую файл
+         - код не работает с цветом, не знаю что не так и где
+         в иконке все подчищенно fill="currentcolor
+         иконка в кнопке ссылается на иконку свг =есть
+         прописываешь свойство цвет белыый и михбленд
+         в результате иконка исчесает начинает принимать цвет подложки"
+        -->
         <span class="save-text">Сохранить на память</span>
-       </button> 
-       <svg class="floppy-symbol" xmlns="http://www.w3.org/2000/svg">
-         <symbol class="floppiy-symbol" id="floppy-icon"
-           width="39" 
-           height="39" 
-           fill="none">
-           <path fill="#000" d="M0 0h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zm0 3h3v3H0zM33 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3h-3V0zm-3 0v3H9V0zM9 0v3H6V0zM6 0v3H3V0zm30 3v3h-3V3zM9 6v3H6V6zm0-3v3H6V3zm0 6v3H6V9zm21-3v3h-3V6zm0-3v3h-3V3zm0 6v3h-3V9zm-6-3v3h-3V6zm0-3v3h-3V3zm0 6v3h-3V9zm6 3v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3H9v-3zm-3 0v3H6v-3zm24 9v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3H9v-3zm-3 0v3H6v-3zm24 3v3h-3v-3zM9 24v3H6v-3zm24 3v3h-3v-3zM9 27v3H6v-3zm24 3v3h-3v-3zM9 30v3H6v-3zm0 3v3H6v-3zm24 0v3h-3v-3zm3 3v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3h-3v-3zm-3 0v3H9v-3zm-3 0v3H6v-3zm-3 0v3H3v-3zm33 3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3v-3h3zm0-3h-3V9h3zm0-3h-3V6h3z"/>
-         </symbol>
-       </svg>
-       <dialog id="dialog-id">
+      </button> 
+      <dialog id="dialog-id" class="dialog-frame">
           <!-- напрямую в диалог свойства позиции делают меню
            видимым на постоянной основе... -->
         <div class="memory-save">
          <div class="message">
-           <svg class="floppy-L" 0 0 39 39>
-             <use href="#floppy-icon">
+           <svg 
+            width="39" 
+            height="39" 
+            viewBox="0 0 39 39">
+              <use href="./svg/floppy.svg#floppy"></use>
            </svg> 
-           <div class="dialog-text">Вставьте
+           <p class="dialog-text">Вставьте
 дискету, чтобы
-продолжить</div>
+продолжить</p>
          </div>
          <form method="dialog">
          <button class="ok-button" >
-           <span class="ok-button-text">OK</span>
+           <span class="button__text">OK</span>
          </button>
          </form>
         </div>
-       </dialog> 
+      </dialog> 
     </footer>
     <script src="./scripts/like.js"></script>
   </body>
