@@ -10,12 +10,39 @@
 
 */
 
+/*  !!!! 071225_ -10- Для оптимизации и упрощения поддержки 
+рекомендуется использовать общий класс, например, .button
+-12- Пожалуйста, учтите, что настройки вариативных
+ шрифтов должны быть указаны в свойстве font-variation-settings.
+ -все выполнено - в чем проблема то?!
+ неужели так трудно объяснить чего хотите?
+ когда ссылаетесь на предыдущие итерации делайте цитаты или ссылки,
+ и так не понятно написано в чем ошибка так еще и надо искать, как она
+ не ясно была описана в прошлой итерации,
+ я не могу принять данные замечания - они второй раз 
+ указывают в пустоту - может вам и очевидно - 
+ но нет - строки 10  и 12 = пусты
+ речь про управление шрифтами - я все возможные механизмы ввел!
+
+ 29 - Рекомендуется выбирать классы, которые наиболее 
+ точно отражают содержимое и функциональность элемента или блока.
+ - тоже замечание в воздух пройтись по файлу и переименовать, не пойми что
+ в не пойми что - но другое, я не телепат - модефикаторы названы понятно,
+ а изменение их на данном этапе привлечет к поломкам, тк ползать
+ и править все мнимые буквы приведет к утере связей.
+ - можно мне помочь с написанием кода
+ и научить не допускать ошибок влиящих на работу - а не докапываться
+  до цвета букв?
+
+*/
+
+
 .page {
   /* ??? 13- настройки вариативных шрифтов должны быть = к чему это?? тут нет такого шрифта еще несколько атрибутов вниз... */
   margin: 0 auto;
   min-inline-size: 375px;
   min-block-size: 100dvb;
-  font-family: var(--accent-amazing-fantastic-pixilate-font), sans-serif;
+  font-family: var(--action-font), sans-serif;
   /* ??? 17-предусмотреть запасные значения = о чем - какие альтернативы - добавлен же подстраховочный шрифт*/
   background-image: var(--cover-gradient); /*фоновая кртнка*/
   background-repeat: no-repeat; /*Свйство - упрвлт пвтрм фнвго избржния. По умлчнию = repeat*/
@@ -50,7 +77,7 @@
   margin: 100px auto 0px;
   background-color: var(--card-color);
   border: var(--border-line);
-    flex-direction: column;
+  flex-direction: column;
   align-items: center;
   gap: 20px;
 }
@@ -90,17 +117,19 @@
 
 .card__title {
   margin: 4px 10px 3px;
-  font-family: var(--main-no-idea-for-semantic-name-font), sans-serif;
+  font-family: var(--main-font), sans-serif;
   font-variation-settings: 'wght' 715; /*смысл этого параметра в данной модели - тут нет характеристик для раельизации */
   white-space: pre;
-    font-size: 18px;
+  font-size: 18px;
   line-height: 1.25em;
   letter-spacing: 0;
 }
 
 .card__picture {
   position: relative;
-  border: 2px solid black;
+  justify-self: center;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;;
 }
 
 .card__picture_image {
@@ -160,18 +189,18 @@
   (-webkit-text-stroke: 1px var(--lable-overline-color)) or
     (text-stroke: 1px #ffffff)
 ) {
-  .card__label {
+  .label {
     -webkit-text-stroke: 1px #ffffff;
-    text-stroke: 1px #ffffff;
+   text-stroke: 1px #ffffff;
     text-shadow: none;
   }
 }
 
 @supports not (
   (-webkit-text-stroke: 1px #ffffff) or
-    (text-stroke: 1px #ffffff)
+   (text-stroke: 1px #ffffff)
 ) {
-  .card__label {
+  .label {
     text-shadow: 1px 1px 0 #ffffff,
       -1px -1px 0 #ffffff, -1px 1px 0 #ffffff,
       1px -1px 0 #ffffff;
@@ -182,17 +211,14 @@
 Используйте более корректное слово. = о чем речь???*/
 .card__text {
   margin: 22px 25px 0px;
-  font-family: var(--main-no-idea-for-semantic-name-font), sans-serif;
-  white-space: pre;
-  font-weight: 410;
-  font-size: 18px;
-  line-height: 21px;
-  letter-spacing: 0;
 }
 
 .card__memory-text {
   margin: 25px 25px 0px;
-  font-family: var(--main-no-idea-for-semantic-name-font), sans-serif;
+}
+
+.card__base-text {
+  font-family: var(--main-font), sans-serif;
   white-space: pre;
   font-weight: 410;
   font-size: 18px;
@@ -200,7 +226,15 @@
   letter-spacing: 0;
 }
 
-.heart-and-button {
+/* - Классы .card__memory-text .card__text обладают общими стилями. 
+Текст визуально в макете не отличается. 
+Нужен общий класс. 
+- и на кой цвет множить бесполезные классы?
+чем это выигрывает? так по одному классу на объект
+с четким определением,
+а теперь мне нужно будет не ошибиться везде прицепить доп
+класс, еще и назвпние сейчас не понравиться....*/
+.card__interactive-block {
   margin: 25px 25px 25px;
   display: flex;
   flex-direction: row;
@@ -209,6 +243,9 @@
   justify-content: center;
   gap: 7px;
 }
+/*идите к черту со своей толлерантностью 
+если это иконка сердца - я и называю ее сердце
+*?/
 
 /* >>>>>>>>>>>>>>>>>> кнопка Like <<<<<<<<<<<<<<<<<<<<<<< */
 
@@ -241,27 +278,26 @@ transition: fill 0.3s linear 0.03s;
   opacity: 0;
 }
 
-.like-icon:hover {
-.core {
+
+.like-icon:hover .core {
 fill: black;
 transition-delay: 0s;
 }
-.main-body {
+.like-icon:hover .main-body {
 fill: black;
 transition-delay: 0.05s;
 }
-}
 
-.like-icon:active {
-.core {
+.like-icon:active .core {
 fill: rgb(255, 0, 0);
 transition-delay: 0s;
 }
-.main-body {
+
+.like-icon:active .main-body {
 fill: rgb(253, 0, 0);
 transition-delay: 0.05s;
 }
-}
+
 
 .like-icon.is-liked .core {
 transition: fill 0.3s linear 0s;
@@ -279,22 +315,25 @@ fill: red;
 }
 
 .like-icon.is-liked {
-  animation: heartbeat 0.3s 0.1s ease-in 1;
+  animation: zoom-in 0.3s 0.1s ease-in 1;
 }
 
 .like-icon.is-liked .sparks {
-  animation: sparkson 0.3s 0.3s ease-in 1;
+  animation: fade-in 0.3s 0.3s ease-in 1;
 }
 
 /*~~~~~~~~~~~~~~~~~~~~~ анимация сердца end~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 .like-icon {
   position: absolute;
-  top: -5px;
+  top: -3px;
   left: 0px;
   width: 37px;
   height: 40px;
 }
+/*нет возможности реализовать через флекс у иконка пропадает
+возможность менять размер
+*/
 
 .card__icon-button:focus:focus-visible {
   outline: 2px solid black;
@@ -332,7 +371,7 @@ transition: 0.3s ease;
 
 
 
-/*-----------------подвал--------------------*/
+/*-----------------подвал - которого нет --------------------*/
 
 /* >>>>>>>>>>>>>>>>>> кнопка СОХРАНИТЬ НА ПАМЯТЬ <<<<<<<<<<<< */
 .button {
@@ -342,6 +381,11 @@ transition: 0.3s ease;
   border: var(--button-border-line);
   overflow: hidden;
 }
+/* -Для оптимизации и упрощения поддержки рекомендуется использовать 
+общий класс, например, .button,
+-ну вот и что не так - вот вынес же?!
+*/
+
 
 .button__text {
   position: absolute;
@@ -362,6 +406,8 @@ transition: 0.3s ease;
   fill: #ffffff;
   color: white;
   z-index: 30;
+   width: 27px;
+    height: 27px;
 }
 
 .save-button {
@@ -376,6 +422,13 @@ transition: 0.3s ease;
   align-items: center;
   overflow: hidden;
 }
+/* -Будет хорошим решением, если размер кнопки на промежуточных 
+разрешениях не будет менять свои размеры, оставаясь в согласии с макетом.
+-мерт, определитесь уже, то резиновость давайте -
+"вдруг текст поменяется" - то лучше не меняйте... почему я вечно должен
+отгадывать где нам нужна резина, а где нет.
+дизайнер вообще рисовал цветные панельки, а не мечтал
+их тянуть во все стороны */
 
 .save-text {
   z-index: 25;
@@ -412,29 +465,18 @@ transition: 0.3s ease;
 
 .dialog-frame {
   position: fixed;
-  width: fit-content;
-  height: fit-content;
-  background-color: transparent;
+  max-width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
+  width: 100%;
+  max-height: fit-content;
   outline: none;
-  border: none;
+  background-color: rgba(255, 255, 255, 1);
+  border: 2px solid rgba(0, 0, 0, 1);
 }
 
 .memory-save {
-  position: auto;
-  top: auto;
-  bottom: auto;
-  left: auto;
-  right: auto;
   display: flex;
   flex-direction: column;
-  width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
-  min-height: 191px;
-  top: clamp(14.75rem, 11.482rem + 13.9437vw, 24.03125rem);
-  left: clamp(1.0625rem, -10.5242rem + 49.4366vw, 33.96875rem);
-  z-index: 15;
-  background-color: rgba(255, 255, 255, 1);
-  border: 2px solid rgba(0, 0, 0, 1);
-  gap: 26px;
+  gap: 30px;
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -447,7 +489,7 @@ dialog::backdrop {
 }
 
 .message {
-  margin: 0px auto;
+  margin: 13px auto 0;
   display: flex;
   flex-direction: row;
   gap: 23px;
@@ -462,19 +504,27 @@ dialog::backdrop {
 
 .dialog-text {
   white-space: pre;
+  text-transform: uppercase;
 }
 
 /* >>>>>>>>>>>>>>>>>>>>>>> кнопка ОК <<<<<<<<<<<<<<<<<<<<< */
 
 .ok-button {
   position: relative;
-  margin: 0 auto;
+  margin: 0 auto 10px;
   width: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
   height: 38px;
   background-color: white;
    border: solid 2px black;
    overflow: hidden;
+   text-transform: uppercase;
 }
+/* -Согласно макету, некоторые элементы должны содержать текст, 
+который выполнен заглавными буквами.
+-куда еще воткнуть заглавные? я не понимаю в чем проблема
+позиция не указана где не тот шрифт,
+с макетом совпадает - какая разница как задачка решена?
+и потом CUPS - не вежливо! */
 
 .ok-button:focus:focus-visible {
 outline: none;
@@ -499,6 +549,11 @@ transition: 0.3s ease;
   translate: 0% 0%;
 }
 
+.floppy-icon {
+    width: 21px;
+    height: 21px;
+  }
+
 @media (376px < width) {
   .card__title {
     white-space: normal;
@@ -511,17 +566,18 @@ transition: 0.3s ease;
   .card__memory-text {
     white-space: normal;
   }
-
-  .floppy-icon {
-    width: 21px;
-    height: 21px;
-  }
 }
 
 @media (1439px < width) {
   .save-button {
     height: 55px;
   }
+
+ .save-icon {
+   width: 21px;
+    height: 21px;
 }
+  }
+
 
 
