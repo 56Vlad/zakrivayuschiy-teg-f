@@ -36,7 +36,19 @@
 
 */
 
-
+/* -Необходимо вынести все общие стили, чтобы не дублировать 
+их для каждой кнопки.
+Эффект наведения тоже являются общим для трех кнопок.
+ Псевдоэлемент, который выполняет эту роль, тоже общий для всех.
+ 
+ - очередной бдсм прикол - ради трех кнопок, создавать свойство и 
+ прописывать его в восьми карточках - это точно оптимизация - 
+ явно не для мня
+ - я прошолся по всем кнопкам - дубликаты, не являются дубликатами
+ это взвешенное применение инструмента в конкретном месте для 
+ конкретного случия, что предотварщает появление неожиданных 
+ поломок на другой стороне кода, когда вносишь очевидное исправление
+ в конкретном месте */
 .page {
   /* ??? 13- настройки вариативных шрифтов должны быть = к чему это?? тут нет такого шрифта еще несколько атрибутов вниз... */
   margin: 0 auto;
@@ -169,7 +181,7 @@
   filter: hue-rotate(90deg) saturate(500%) opacity(70%) grayscale(0.8);
 }
 
-.lable {
+.label {
   position: absolute;
   top: 25px;
   right: 25px;
@@ -258,6 +270,7 @@
   outline: 2px solid transparent;
   transition: outline 0.3s ease;
 }
+/* -тут нельзя подменить часть за счет .button*/
 
 /*~~~~~~~~~~~~~~~~~~~~~ анимация сердца ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
@@ -411,7 +424,7 @@ transition: 0.3s ease;
 }
 
 .save-button {
-  margin: 49px auto 80px;
+  margin: 49px auto 100px;
   display: flex;
   flex-wrap: wrap;
   width: clamp(19.125rem, 18.4868rem + 2.723vw, 20.9375rem);
@@ -439,6 +452,11 @@ transition: 0.3s ease;
   line-height: 90%;
   letter-spacing: 0;
 }
+/* совсем не похоже с button-text у них разный набор свойств
+тк работают при разных условиях, в то время как
+баттон описывет полноценный текст в кнопке учитывае влияние на него
+текст в сохронялке находится на одном уровне с иконкой и 
+работает иначе*/
 
 .save-button:focus:focus-visible {
 outline: none;
@@ -467,13 +485,12 @@ transition: 0.3s ease;
   position: fixed;
   max-width: clamp(21.3125rem, 21.0484rem + 1.1268vw, 22.0625rem);
   width: 100%;
-  max-height: fit-content;
   outline: none;
   background-color: rgba(255, 255, 255, 1);
   border: 2px solid rgba(0, 0, 0, 1);
 }
 
-.memory-save {
+.dialog-block {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -501,6 +518,12 @@ dialog::backdrop {
   letter-spacing: 0;
   text-transform: uppercase;
 }
+/* -491 https://disk.yandex.com/i/RXDaUWbrByXMlw
+Расположение иконки внутри блока отличается от макета.
+я не понимаю как вы смотрите у меня все четко.
+смотрите приложенную вами картинку - считайте теперь ее моей
+под стрелками указаны места которыея имеют правильные отступы
+ */
 
 .dialog-text {
   white-space: pre;
@@ -509,15 +532,11 @@ dialog::backdrop {
 
 /* >>>>>>>>>>>>>>>>>>>>>>> кнопка ОК <<<<<<<<<<<<<<<<<<<<< */
 
-.ok-button {
-  position: relative;
+.dialog__button {
   margin: 0 auto 10px;
   width: clamp(16.3125rem, 15.6083rem + 3.0047vw, 18.3125rem);
   height: 38px;
-  background-color: white;
-   border: solid 2px black;
-   overflow: hidden;
-   text-transform: uppercase;
+  text-transform: uppercase;
 }
 /* -Согласно макету, некоторые элементы должны содержать текст, 
 который выполнен заглавными буквами.
@@ -526,13 +545,13 @@ dialog::backdrop {
 с макетом совпадает - какая разница как задачка решена?
 и потом CUPS - не вежливо! */
 
-.ok-button:focus:focus-visible {
+.dialog__button:focus:focus-visible {
 outline: none;
 box-shadow: 2px 2px 0px 0px rgb(0 0 0 / 0.6);
 transition: 0.3s ease;
 }
 
-.ok-button::before {
+.dialog__button::before {
   content: "";
   position: absolute;
   z-index: 20;
@@ -545,7 +564,7 @@ transition: 0.3s ease;
   transition: translate 0.5s ease-in-out;
 }
 
-.ok-button:hover::before {
+.dialog__button:hover::before {
   translate: 0% 0%;
 }
 

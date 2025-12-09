@@ -54,7 +54,7 @@
                 class="card__picture_image"
                 loading="lazy"
               />
-              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div><!-- глушим скриндридер чтобы не отвлекал на ерунду-->
+              <div class="label" aria-hidden="true">&lt;/HTML&gt;</div><!-- глушим скриндридер чтобы не отвлекал на ерунду-->
             </div>
             <p class="card__text card__base-text">Это было самое начало пути. На 
 этом этапе важно было 
@@ -107,7 +107,7 @@
                 class="card__picture_image grayscale"
                 loading="lazy" 
               /> <!-- ленивая загрузка loading="lazy" улучшает скорость страницы-->
-              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
+              <div class="label" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text card__base-text">На первых этапах мы работали со 
 страхами и сомнениями, которые
@@ -154,7 +154,7 @@
                 class="card__picture_image saturate"
                 loading="lazy"
               />
-              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
+              <div class="label" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text card__base-text">Первый проект — позади! Но это 
 всё ещё самое начало пути. 
@@ -196,7 +196,7 @@
                 alt="фургон на кемпинг парковке ночью"
                 class="card__picture_image hue-rotate"
               />
-              <div class="lable">&lt;/HTML&gt;</div>
+              <div class="label" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text card__base-text">На этом этапе вы уже достаточно 
 разбирались в основах вёрстки,
@@ -242,7 +242,7 @@
                 class="card__picture_image invert"
                 loading="lazy"
               />
-             <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
+             <div class="label" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text card__base-text">Всё это время вы были не одиноки 
 (хотя, возможно, иногда и 
@@ -290,9 +290,22 @@
                 class="card__picture_image sepia"
                 loading="lazy"
               />
-              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
+              <div class="label" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
-            <p class="card__tex card__base-textt">На этом курсе вы постоянно 
+<!-- -https://disk.yandex.com/i/KdYCBapyhjhyvQ
+Не должно быть сломанной верстки или недоработанных моментов. 
+Пожалуйста, не забывайте проверять внесённые изменения перед отправкой!  
+Это поможет:  
+- ясен кренделб - все нормально работало - пока не пошел
+             вашу чертову семантику править - которая  не влияет
+              на работу пока ее не трогаешь,
+«
+The code is more what you'd call guidelines than actual rules
+»  (c.)
+          , зато окогда начинаешь вмешиватьс в построенную иерархию
+          все летит в тартар, вотесть тут функция подмены?
+          это не возможно вручную вычещать в десятке блокках-->
+            <p class="card__text card__base-text">На этом курсе вы постоянно 
 решали разные задачи. В какой-то 
 момент вам могло показаться, что 
 решения просто иссякли. Значит, 
@@ -332,7 +345,7 @@
                 class="card__picture_image blur"
                 loading="lazy"
               />
-              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
+              <div class="label" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text card__base-text">Во время учёбы часто возникает 
 чувство, когда не знаешь, за что
@@ -377,7 +390,7 @@
                 alt="фургон на кемпинг парковке ночью"
                 class="card__picture_image multy"
               />
-              <div class="lable" aria-hidden="true">&lt;/HTML&gt;</div>
+              <div class="label" aria-hidden="true">&lt;/HTML&gt;</div>
             </div>
             <p class="card__text card__base-text">Сейчас вы уже очень много знаете 
 о вёрстке. Но это только начало.
@@ -453,8 +466,8 @@
       <dialog id="dialog-id" class="dialog-frame">
           <!-- напрямую в диалог свойства позиции делают меню
            видимым на постоянной основе... -->
-        <div class="memory-save">
-         <form method="dialog" class="message">
+        <div class="dialog-block">
+         <div method="dialog" class="message">
            <svg 
             width="39" 
             height="39" 
@@ -464,9 +477,9 @@
            <p class="dialog-text">Вставьте
 дискету, чтобы
 продолжить</p>
-           </form>
+           </div>
          <form method="dialog">
-         <button class="ok-button" type="submit">
+         <button class="dialog__button button" type="submit">
           <!-- "Ещё попап закрывается по нажатию кнопки отправки формы: 
            <button type="submit">. Если кнопка одна в форме, можно просто 
            написать <button>, без атрибутов."-->
